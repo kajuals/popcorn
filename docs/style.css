@@ -1,44 +1,120 @@
 :root {
-  --primary-color: lightcoral;
+  --primary-color: #b36262;
   --secondary-color: #f8f8f8;
   --text-color: #333;
+  --light-color: #fff;
   --heading-color: darkblue;
   --success-bg: #d4edda;
   --success-border: #c3e6cb;
   --success-text: #155724;
+  --instagram-color: #E1306C;
+  --tiktok-color: #000000;
 }
 
 body {
   font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 1em;
-  background-color: var(--primary-color);
-  color: var(--text-color);
   margin: 0;
-  min-height: 100vh;
+  padding: 0;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
-/* Contact Container */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header img {
+  height: 80px;
+  transition: transform 0.3s ease;
+}
+
+header img:hover {
+  transform: scale(1.05);
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: var(--light-color);
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: 2px solid var(--light-color);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dropbtn:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: var(--light-color);
+  min-width: 200px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: var(--text-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
 .contact-container {
-  max-width: 800px; /* Reduced from 1200px */
+  max-width: 800px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  background-color: var(--secondary-color);
+  background-color: var(--light-color);
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   padding: 1.5rem;
 }
 
-/* Form Elements */
 .contact-form {
   width: 100%;
   box-sizing: border-box;
 }
 
 input, textarea {
-  width: calc(100% - 1.6rem); /* Accounts for padding */
+  width: calc(100% - 1.6rem);
   padding: 0.8rem;
   margin-bottom: 1rem;
   border: 1px solid #ddd;
@@ -55,15 +131,19 @@ textarea {
 button[type="submit"] {
   width: 100%;
   padding: 1rem;
-  background-color: var(--heading-color);
+  background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
 
-/* Social Buttons - Always stacked vertically */
+button[type="submit"]:hover {
+  background-color: #9a5252;
+}
+
 .social-buttons {
   display: flex;
   flex-direction: column;
@@ -88,11 +168,11 @@ button[type="submit"] {
 }
 
 .instagram-button {
-  background-color: #E1306C;
+  background-color: var(--instagram-color);
 }
 
 .tiktok-button {
-  background-color: #000000;
+  background-color: var(--tiktok-color);
 }
 
 .social-icon {
@@ -100,19 +180,44 @@ button[type="submit"] {
   font-size: 1.2rem;
 }
 
-/* Success Message */
-.form-success {
-  background-color: var(--success-bg);
-  color: var(--success-text);
+.form-response {
+  margin-top: 1rem;
   padding: 1rem;
-  margin: 1rem 0;
   border-radius: 5px;
-  border: 1px solid var(--success-border);
-  text-align: center;
+  display: none;
 }
 
-/* Mobile adjustments */
-@media (max-width: 480px) {
+.form-response.success {
+  background-color: var(--success-bg);
+  color: var(--success-text);
+  border: 1px solid var(--success-border);
+  display: block;
+}
+
+.form-response.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  display: block;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 1rem;
+  }
+  
+  header img {
+    height: 60px;
+  }
+  
   .contact-container {
     padding: 1rem;
   }

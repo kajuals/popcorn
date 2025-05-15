@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Performance Schedule - Popcorn Dance Club</title>
+<style>
+  :root {
+    --primary-color: #b36262;
+    --secondary-color: #d59e9e;
+    --text-color: #333;
+    --light-color: #fff;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  header img {
+    height: 80px;
+    transition: transform 0.3s ease;
+  }
+  
+  header img:hover {
+    transform: scale(1.05);
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropbtn {
+    background-color: transparent;
+    color: var(--light-color);
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: 2px solid var(--light-color);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .dropbtn:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--light-color);
+    min-width: 200px;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    text-align: center;
+  }
+  
+  .construction {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 3rem 2rem;
+    margin: 2rem 0;
+  }
+  
+  .construction h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .construction-icon {
+    font-size: 4rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    margin-top: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    header {
+      padding: 1rem;
+    }
+    
+    header img {
+      height: 60px;
+    }
+  }
+</style>
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<header>
+  <a href="index.html"><img src="assets/images/popcorn logo.png" alt="Popcorn Dance Club Logo" /></a>
+  <div class="dropdown">
+    <button class="dropbtn">Menu ▼</button>
+    <div class="dropdown-content">
+      <a href="about.html">Check Us Out</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="schedule.html">Performance Schedule</a>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="construction">
+    <div class="construction-icon">
+      <i class="fas fa-tools"></i>
+    </div>
+    <h1>Under Construction</h1>
+    <p>Our performance schedule is currently being updated.</p>
+    <p>Please check back soon for upcoming events and shows!</p>
+    <p>In the meantime, follow us on <a href="https://www.instagram.com/popcorn_atpitt/" target="_blank">Instagram</a> or <a href="https://www.tiktok.com/@popcornatpitt" target="_blank">TikTok</a> for updates.</p>
+  </div>
+</html>

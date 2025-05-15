@@ -1,25 +1,144 @@
+:root {
+  --primary-color: lightcoral;
+  --secondary-color: #f8f8f8;
+  --text-color: #333;
+  --heading-color: darkblue;
+  --success-bg: #d4edda;
+  --success-border: #c3e6cb;
+  --success-text: #155724;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 2em;
-    background-color: lightcoral;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 2em;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  margin: 0;
+  min-height: 100vh;
 }
 
 h1 {
-    color: darkblue;
+  color: var(--heading-color);
+  margin-bottom: 1.5rem;
+}
+
+/* Contact Container Styles */
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 2rem;
+  text-align: left;
+}
+
+/* Form Elements */
+input, textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 16px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--heading-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
+button:hover {
+  background-color: #1a237e;
+}
+
+/* Social Buttons */
+.social-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.social-button:hover {
+  transform: translateY(-2px);
+}
+
+.instagram-button {
+  background-color: #E1306C;
+}
+
+.tiktok-button {
+  background-color: #000000;
+}
+
+/* Success Message */
 .form-success {
-    background-color: #d4edda;
-    color: #155724;
+  background-color: var(--success-bg);
+  color: var(--success-text);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  border: 1px solid var(--success-border);
+  text-align: center;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  body {
+    padding: 1em;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
     padding: 1rem;
-    margin: 1rem 0;
-    border-radius: 5px;
-    border: 1px solid #c3e6cb;
+  }
+
+  .social-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .social-button {
+    width: 100%;
+    padding: 0.8rem;
     text-align: center;
+  }
+
+  button, button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .contact-info, .contact-form {
+    padding: 0;
+  }
 }

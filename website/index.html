@@ -1,16 +1,107 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Popcorn Dance Club</title>
-    <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Popcorn Dance Club</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #d59e9e;
+    color: #333;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #b36262;
+    color: white;
+  }
+  header img {
+    height: 50px;
+  }
+  /* Dropdown container */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  /* Dropdown button */
+  .dropbtn {
+    background-color: #b36262;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  /* Links inside dropdown */
+  .dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  /* Hover effect on dropdown links */
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  /* Show dropdown when hovering over dropdown container */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    gap: 1rem;
+  }
+  .gallery img, .gallery video {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+  }
+</style>
 </head>
 <body>
-    <h1>Welcome!</h1>
-    <p>This is a simple website</p>
-    <button onclick="changeText()">Click</button>
-    <p id="message"></p>
-    <script src="script.js"></script>
+<header>
+  <img src="assets/images/popcorn logo.png" alt="Popcorn Logo" />
+  <div class="dropdown">
+    <button class="dropbtn">Menu ▼</button>
+    <div class="dropdown-content">
+      <a href="about.html">Check Us Out</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="schedule.html">Performance Schedule</a>
+    </div>
+  </div>
+</header>
+<main>
+  <h1>Welcome to Popcorn Dance Club</h1>
+  <p>Check out some of our photos and videos from recent performances!</p>
+  <div class="gallery">
+    <img src="assets/images/performance pic 1.jpeg" alt="Dance Photo 1" />
+    <img src="assets/images/performance pic 2.JPG" alt="Dance Photo 2" />
+    <video controls>
+      <source src="assets/videos/Surround_Sound_Popcorn.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <img src="assets/images/Picture3.png" alt="Dance Photo 3" />
+  </div>
+</main>
 </body>
 </html>

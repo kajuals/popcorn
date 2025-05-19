@@ -227,17 +227,38 @@ footer {
   }
 }
 
-body {
-  font-family: sans-serif;
-  text-align: center;
-  margin: 2em;
+/* Search form in header */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-input, button {
-  padding: 0.5em;
-  margin: 0.5em;
+.search-form input[type="search"] {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 2px solid var(--light-color);
+  border-radius: 30px;
+  outline: none;
+  width: 200px;
+  transition: border-color 0.3s ease;
 }
 
-iframe {
-  border-radius: 8px;
+.search-form input[type="search"]:focus {
+  border-color: var(--secondary-color);
+}
+
+.search-form button {
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+  border: none;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+  background-color: var(--primary-color);
 }

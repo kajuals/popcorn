@@ -124,13 +124,45 @@
     margin: 0 auto;
   }
 
-  .drive-gallery {
-    width: 100%;
-    height: 700px;
-    border: none;
-    border-radius: 12px;
+  /* Added filter dropdown styles */
+  #tagFilter {
+    padding: 8px 12px;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 200px;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 0;
+  }
+
+  .gallery-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
     box-shadow: var(--shadow);
-    margin-top: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+
+  .gallery img, .gallery video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  video {
+    background-color: #000;
   }
 
   footer {
@@ -148,6 +180,10 @@
 
     header img {
       height: 60px;
+    }
+
+    .gallery {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
   }
 </style>
@@ -167,14 +203,55 @@
 </header>
 <main>
   <section class="intro">
-    <h1>Upload to the Google Drive!</h1>
+    <h1>Welcome to Popcorn Dance Club</h1>
   </section>
 
-  <!-- Google Drive Embedded Folder -->
-  <iframe
-    class="drive-gallery"
-    src="https://drive.google.com/drive/folders/1ebsDMrKSnLjgR9B9wla4q8HYA1_h3AFb?usp=sharing">
-  </iframe>
+  <header>
+  <img src="assets/images/popcorn logo.png" alt="Popcorn Dance Club Logo" />
+  <form class="search-form" action="/search" method="GET" role="search">
+    <input
+      type="search"
+      name="name"
+      placeholder="Search by name... Or 'Everyone' for group photos!"
+      aria-label="Search by name"
+      required
+    />
+    <button type="submit">Search</button>
+  </form>
+</header>
 
+
+  <div class="gallery" id="gallery">
+    <div class="gallery-item" data-tags="Andrew Kim,Sophia Choi,Simon Ahn,Yumin Park">
+      <img src="assets/images/performance pic 1.jpeg" alt="Dance performance showing energetic moves" />
+    </div>
+    <div class="gallery-item" data-tags="Caleb Lou,Aaron Yang, Michael Lee,Yumin Park,Andrew Kim,Simon Ahn,Noah Lee">
+      <img src="assets/images/performance pic 2.JPG" alt="Group dance formation on stage" />
+    </div>
+    <div class="gallery-item" data-tags="Everyone">
+      <img src="assets/images/Picture3.png" alt="Dancers in colorful costumes" />
+    </div>
+  </div>
 </main>
+
+<script>
+  const tagFilter = document.getElementById('tagFilter');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+
+  tagFilter.addEventListener('change', () => {
+    const selectedTag = tagFilter.value.trim();
+
+    galleryItems.forEach(item => {
+      const tagsAttr = item.getAttribute('data-tags');
+      const tags = tagsAttr ? tagsAttr.split(',').map(t => t.trim()) : [];
+      if (!selectedTag || tags.includes(selectedTag)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+</body>
 </html>

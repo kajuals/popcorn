@@ -1,0 +1,10 @@
+[
+  {
+    "path": "assets/images/photo1.jpg",
+    "tags": ["Alice", "Bob"]
+  },
+  {
+    "path": "assets/images/photo2.jpg",
+    "tags": ["Charlie"]
+  }
+]

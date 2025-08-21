@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
 <link rel="manifest" href="assets/images/site.webmanifest">
-<title>Popcorn Dance Club</title>
+<title>Gallery - Popcorn Dance Club</title>
 <style>
   :root {
     --primary-color: #b36262;
@@ -103,66 +103,36 @@
     padding: 0 2rem;
   }
 
-  .intro {
-    text-align: center;
-    margin-bottom: 3rem;
-    padding: 2rem;
-    background-color: var(--light-color);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-  }
-
-  .intro h1 {
+  h1 {
     color: var(--primary-color);
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
-  }
-
-  .intro p {
-    font-size: 1.1rem;
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  /* Added filter dropdown styles */
-  #tagFilter {
-    padding: 8px 12px;
-    font-size: 1rem;
     margin-bottom: 1.5rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    width: 200px;
+    font-size: 2.2rem;
+    text-align: center;
   }
 
   .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
-    margin-top: 0;
   }
 
   .gallery-item {
-    position: relative;
+    background-color: var(--light-color);
     border-radius: 10px;
-    overflow: hidden;
     box-shadow: var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    transition: transform 0.3s ease;
   }
 
   .gallery-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
   }
 
-  .gallery img, .gallery video {
+  .gallery-item img {
     width: 100%;
-    height: 100%;
+    height: 250px;
     object-fit: cover;
     display: block;
-  }
-
-  video {
-    background-color: #000;
   }
 
   footer {
@@ -190,7 +160,7 @@
 </head>
 <body>
 <header>
-  <img src="assets/images/popcorn logo.png" alt="Popcorn Dance Club Logo" />
+  <a href="index.html"><img src="assets/images/popcorn logo.png" alt="Popcorn Dance Club Logo" /></a>
   <div class="dropdown">
     <button class="dropbtn">Menu ▼</button>
     <div class="dropdown-content">
@@ -201,57 +171,19 @@
     </div>
   </div>
 </header>
+
 <main>
-  <section class="intro">
-    <h1>Welcome to Popcorn Dance Club</h1>
-  </section>
-
-  <header>
-  <img src="assets/images/popcorn logo.png" alt="Popcorn Dance Club Logo" />
-  <form class="search-form" action="/search" method="GET" role="search">
-    <input
-      type="search"
-      name="name"
-      placeholder="Search by name... Or 'Everyone' for group photos!"
-      aria-label="Search by name"
-      required
-    />
-    <button type="submit">Search</button>
-  </form>
-</header>
-
-
-  <div class="gallery" id="gallery">
-    <div class="gallery-item" data-tags="Andrew Kim,Sophia Choi,Simon Ahn,Yumin Park">
-      <img src="assets/images/performance pic 1.jpeg" alt="Dance performance showing energetic moves" />
+  <h1>Gallery</h1>
+  <div class="gallery">
+    <!-- Add more photos here by copying a gallery-item block -->
+    <div class="gallery-item">
+      <img src="assets/images/performance pic 1.jpeg" alt="Dance performance 1" />
     </div>
-    <div class="gallery-item" data-tags="Caleb Lou,Aaron Yang, Michael Lee,Yumin Park,Andrew Kim,Simon Ahn,Noah Lee">
-      <img src="assets/images/performance pic 2.JPG" alt="Group dance formation on stage" />
+    <div class="gallery-item">
+      <img src="assets/images/performance pic 2.JPG" alt="Dance performance 2" />
     </div>
-    <div class="gallery-item" data-tags="Everyone">
-      <img src="assets/images/Picture3.png" alt="Dancers in colorful costumes" />
+    <div class="gallery-item">
+      <img src="assets/images/Picture3.png" alt="Group photo" />
     </div>
   </div>
-</main>
-
-<script>
-  const tagFilter = document.getElementById('tagFilter');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-
-  tagFilter.addEventListener('change', () => {
-    const selectedTag = tagFilter.value.trim();
-
-    galleryItems.forEach(item => {
-      const tagsAttr = item.getAttribute('data-tags');
-      const tags = tagsAttr ? tagsAttr.split(',').map(t => t.trim()) : [];
-      if (!selectedTag || tags.includes(selectedTag)) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  });
-</script>
-
-</body>
 </html>

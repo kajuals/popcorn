@@ -3,28 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-<link rel="manifest" href="assets/images/site.webmanifest">
 <title>Gallery - Popcorn Dance Club</title>
 <style>
   :root {
     --primary-color: #b36262;
-    --secondary-color: #d59e9e;
-    --text-color: #333;
     --light-color: #fff;
+    --text-color: #333;
     --shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
 
   body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
     background-color: #f8f8f8;
     color: var(--text-color);
-    line-height: 1.6;
   }
 
   header {
@@ -41,60 +33,7 @@
   }
 
   header img {
-    height: 80px;
-    transition: transform 0.3s ease;
-  }
-
-  header img:hover {
-    transform: scale(1.05);
-  }
-
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-
-  .dropbtn {
-    background-color: transparent;
-    color: var(--light-color);
-    padding: 12px 24px;
-    font-size: 1rem;
-    border: 2px solid var(--light-color);
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .dropbtn:hover {
-    background-color: rgba(255,255,255,0.1);
-  }
-
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: var(--light-color);
-    min-width: 200px;
-    box-shadow: var(--shadow);
-    border-radius: 8px;
-    overflow: hidden;
-    z-index: 1;
-  }
-
-  .dropdown-content a {
-    color: var(--text-color);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.2s ease;
-  }
-
-  .dropdown-content a:hover {
-    background-color: #f0f0f0;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: block;
+    height: 70px;
   }
 
   main {
@@ -104,10 +43,9 @@
   }
 
   h1 {
+    text-align: center;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
-    font-size: 2.2rem;
-    text-align: center;
   }
 
   .gallery {
@@ -117,15 +55,15 @@
   }
 
   .gallery-item {
-    background-color: var(--light-color);
     border-radius: 10px;
-    box-shadow: var(--shadow);
     overflow: hidden;
-    transition: transform 0.3s ease;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: transform 0.2s;
   }
 
   .gallery-item:hover {
-    transform: translateY(-5px);
+    transform: scale(1.03);
   }
 
   .gallery-item img {
@@ -135,55 +73,110 @@
     display: block;
   }
 
-  footer {
-    text-align: center;
-    padding: 2rem;
-    background-color: var(--primary-color);
-    color: var(--light-color);
-    margin-top: 3rem;
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
-  @media (max-width: 768px) {
-    header {
-      padding: 1rem;
-    }
+  .lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
 
-    header img {
-      height: 60px;
-    }
+  .lightbox button {
+    background: var(--primary-color);
+    border: none;
+    color: var(--light-color);
+    padding: 0.6rem 1.2rem;
+    margin: 0.3rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+  }
 
-    .gallery {
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
+  .lightbox button:hover {
+    background: #8d4a4a;
   }
 </style>
 </head>
 <body>
 <header>
-  <a href="index.html"><img src="assets/images/popcorn logo.png" alt="Popcorn Dance Club Logo" /></a>
-  <div class="dropdown">
-    <button class="dropbtn">Menu ▼</button>
-    <div class="dropdown-content">
-      <a href="about.html">Check Us Out</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="schedule.html">Performance Schedule</a>
-      <a href="gallery.html">Gallery</a>
-    </div>
-  </div>
+  <a href="index.html"><img src="assets/images/popcorn logo.png" alt="Popcorn Dance Club Logo"></a>
 </header>
 
 <main>
   <h1>Gallery</h1>
   <div class="gallery">
-    <!-- Add more photos here by copying a gallery-item block -->
+    <!-- Add more photos by copying a gallery-item block -->
     <div class="gallery-item">
-      <img src="assets/images/performance pic 1.jpeg" alt="Dance performance 1" />
+      <img src="assets/images/performance pic 1.jpeg" alt="Dance performance 1">
     </div>
     <div class="gallery-item">
-      <img src="assets/images/performance pic 2.JPG" alt="Dance performance 2" />
+      <img src="assets/images/performance pic 2.JPG" alt="Dance performance 2">
     </div>
     <div class="gallery-item">
-      <img src="assets/images/Picture3.png" alt="Group photo" />
+      <img src="assets/images/Picture3.png" alt="Group photo">
     </div>
   </div>
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+  <div>
+    <button id="download-btn">Download</button>
+    <button id="close-btn">Close</button>
+  </div>
+</div>
+
+<script>
+  const galleryItems = document.querySelectorAll('.gallery-item img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const downloadBtn = document.getElementById('download-btn');
+  const closeBtn = document.getElementById('close-btn');
+
+  galleryItems.forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+      downloadBtn.setAttribute('onclick', `downloadImage('${img.src}')`);
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+    lightboxImg.src = "";
+  });
+
+  function downloadImage(url) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = url.substring(url.lastIndexOf('/')+1);
+    link.click();
+  }
+
+  // Close lightbox when clicking outside the image
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
+      lightboxImg.src = "";
+    }
+  });
+</script>
+</body>
 </html>

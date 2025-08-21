@@ -4,6 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gallery - Popcorn Dance Club</title>
+<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+<link rel="manifest" href="assets/images/site.webmanifest">
 <style>
   :root {
     --primary-color: #b36262;
@@ -29,11 +34,58 @@
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000; /* navbar above normal content */
   }
 
   header img {
     height: 70px;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropbtn {
+    background-color: transparent;
+    color: var(--light-color);
+    padding: 12px 24px;
+    font-size: 1rem;
+    border: 2px solid var(--light-color);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .dropbtn:hover {
+    background-color: rgba(255,255,255,0.1);
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--light-color);
+    min-width: 200px;
+    box-shadow: var(--shadow);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1100; /* above navbar, below modal */
+  }
+
+  .dropdown-content a {
+    color: var(--text-color);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f0f0f0;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
   }
 
   main {
@@ -60,6 +112,7 @@
     box-shadow: var(--shadow);
     cursor: pointer;
     transition: transform 0.2s;
+    background-color: var(--light-color);
   }
 
   .gallery-item:hover {
@@ -73,16 +126,15 @@
     display: block;
   }
 
-  /* Lightbox */
+  /* Lightbox modal */
   .lightbox {
     display: none;
     position: fixed;
-    z-index: 200;
+    z-index: 2000; /* above everything */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background: rgba(0,0,0,0.9);
     justify-content: center;
     align-items: center;
@@ -111,17 +163,46 @@
   .lightbox button:hover {
     background: #8d4a4a;
   }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    header {
+      padding: 1rem;
+    }
+    header img {
+      height: 60px;
+    }
+    .gallery {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  }
 </style>
 </head>
 <body>
+
 <header>
   <a href="index.html"><img src="assets/images/popcorn logo.png" alt="Popcorn Dance Club Logo"></a>
+  <div class="dropdown">
+    <button class="dropbtn">Menu ▼</button>
+    <div class="dropdown-content">
+      <a href="about.html">Check Us Out</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="schedule.html">Performance Schedule</a>
+      <a href="gallery.html">Gallery</a>
+    </div>
+  </div>
 </header>
 
 <main>
   <h1>Gallery</h1>
   <div class="gallery">
-    <!-- Add more photos by copying a gallery-item block -->
     <div class="gallery-item">
       <img src="assets/images/performance pic 1.jpeg" alt="Dance performance 1">
     </div>
@@ -131,17 +212,22 @@
     <div class="gallery-item">
       <img src="assets/images/Picture3.png" alt="Group photo">
     </div>
+    <!-- Add more photos by duplicating this block -->
   </div>
 </main>
 
-<!-- Lightbox -->
+<!-- Lightbox modal -->
 <div class="lightbox" id="lightbox">
-  <img id="lightbox-img" src="" alt="">
+  <img id="lightbox-img" src="">
   <div>
     <button id="download-btn">Download</button>
     <button id="close-btn">Close</button>
   </div>
 </div>
+
+<footer>
+  <p>&copy; 2025 Popcorn Dance Club. All rights reserved.</p>
+</footer>
 
 <script>
   const galleryItems = document.querySelectorAll('.gallery-item img');
@@ -170,53 +256,14 @@
     link.click();
   }
 
-  // Close lightbox when clicking outside the image
+  // Close modal if user clicks outside the image
   lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
+    if(e.target === lightbox){
       lightbox.style.display = 'none';
       lightboxImg.src = "";
     }
   });
 </script>
+
 </body>
-<style>
-  /* Modal styling */
-  #imageModal {
-    display: none;
-    position: fixed;
-    z-index: 50; /* Below the dropdown */
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.9);
-  }
-
-  #modalImage {
-    margin: auto;
-    display: block;
-    max-width: 80%;
-    max-height: 80%;
-  }
-
-  .close {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 60;
-  }
-
-  /* Ensure your dropdown has a higher z-index than normal content */
-  .dropdown-content {
-    z-index: 100 !important;
-    position: absolute;
-  }
-</style>
-
 </html>
